@@ -136,3 +136,9 @@ main_doolittle
 ```
 3. Follow the instructions to input matrices and vectors.
 4. View results of 𝐿, 𝑈, 𝑦, and 𝑥.
+
+---
+
+### License
+
+This project is licensed under the terms of the MIT license. You can find the full license in the `LICENSE` file.
