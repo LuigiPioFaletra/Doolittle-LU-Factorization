@@ -26,129 +26,24 @@ By setting `U * x = y`, the system is solved in two steps:
 ---
 
 ## Doolittle Factorization Method
-Given a 3×3 matrix `A`:
 
-A =
-a11  a12  a13
-a21  a22  a23
-a31  a32  a33
+Given a 3x3 matrix A:
 
-L =
-l11   0    0
-l21  l22   0
-l31  l32  l33
+![Matrix A](images/matrix_A.png)
 
-U =
-u11  u12  u13
- 0   u22  u23
- 0    0   u33
+Lower triangular matrix L:
+
+![Matrix L](images/matrix_L.png)
+
+Upper triangular matrix U:
+
+![Matrix U](images/matrix_U.png)
 
 To reduce the unknowns from 12 to 9, we impose:
 
-l11 = l22 = l33 = 1
+`l11 = l22 = l33 = 1`
 
 This allows solving the system of 9 equations in 9 unknowns directly.
-
----
-
-## Examples
-
-### Example 1
-A =
-1   3   6
-2  -1   1
-4  -2   3
-
-b =
-3
-9
-19
-
-L =
-1  0  0
-2  1  0
-4  2  1
-
-U =
-1   3   6
-0  -7 -11
-0   0   1
-
-y =
-3
-3
-1
-
-x =
-3
--2
-1
-
----
-
-### Example 2
-A =
-3   1   1
--3 -3   1
-3  -3   6
-
-b =
-2
--4
-0
-
-L =
-1  0  0
--1 1  0
-1  2  1
-
-U =
-3   1   1
-0  -2   2
-0   0   1
-
-y =
-2
--2
-2
-
-x =
--1
-3
-2
-
----
-
-### Example 3
-A =
-2    2    1
-1   -1   13/2
--2  -10/3  6
-
-b =
-6
--15
--24
-
-L =
-1    0    0
-1/2  1    0
--1   2/3  1
-
-U =
-2    2    1
-0   -2    6
-0    0    3
-
-y =
-6
--18
--6
-
-x =
-1
-3
--2
 
 ---
 
