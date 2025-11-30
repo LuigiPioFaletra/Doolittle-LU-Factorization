@@ -1,56 +1,51 @@
 # MATLAB Project - Doolittle LU Factorization
 
 ## Introduction
-The MATLAB program implements the Doolittle LU factorization method. This is part of the LU factorization methods, where the matrix \(A\) of the system \(A \cdot x = b\) is decomposed into the product of two matrices \(L\) and \(U\), which are lower and upper triangular matrices, respectively.
+The MATLAB program implements the Doolittle LU factorization method. This is part of the LU factorization methods, where the matrix `A` of the system `A * x = b` is decomposed into the product of two matrices `L` and `U`, which are lower and upper triangular matrices, respectively.
 
 - **Lower triangular matrix (L):** elements above the main diagonal are zero.  
-  \(\forall i < j, a_{ij} = 0\)
+  ```text
+  For i < j, a_ij = 0
+  ```
 - **Upper triangular matrix (U):** elements below the main diagonal are zero.  
-  \(\forall i > j, a_{ij} = 0\)
+  ```text
+  For i > j, a_ij = 0
+  ```
 
-Matrix \(A\) can therefore be written as:
-\[
-A = L \cdot U
-\]
+Matrix `A` can therefore be written as:
+```text
+A = L * U
+```
 
-The system \(A \cdot x = b\) can be rewritten as:
-\[
-(L \cdot U) \cdot x = b \quad \Rightarrow \quad L \cdot (U \cdot x) = b
-\]
-By setting \(U \cdot x = y\), the system is solved in two steps:
-1. \(L \cdot y = b\) using forward substitution.
-2. \(U \cdot x = y\) using backward substitution.
+The system `A * x = b` can be rewritten as:
+(L * U) * x = b  =>  L * (U * x) = b
+By setting `U * x = y`, the system is solved in two steps:
+1. `L * y = b` using forward substitution.
+2. `U * x = y` using backward substitution.
 
 ---
 
 ## Doolittle Factorization Method
-Given a 3×3 matrix \(A\):
+Given a 3×3 matrix `A`:
 
-\[
-A = 
-\begin{bmatrix} 
-a_{11} & a_{12} & a_{13} \\ 
-a_{21} & a_{22} & a_{23} \\ 
-a_{31} & a_{32} & a_{33} 
-\end{bmatrix} 
-=
-\begin{bmatrix} 
-l_{11} & 0 & 0 \\ 
-l_{21} & l_{22} & 0 \\ 
-l_{31} & l_{32} & l_{33} 
-\end{bmatrix} 
-\cdot
-\begin{bmatrix} 
-u_{11} & u_{12} & u_{13} \\ 
-0 & u_{22} & u_{23} \\ 
-0 & 0 & u_{33} 
-\end{bmatrix}
-\]
+A =
+a11  a12  a13
+a21  a22  a23
+a31  a32  a33
+
+L =
+l11   0    0
+l21  l22   0
+l31  l32  l33
+
+U =
+u11  u12  u13
+ 0   u22  u23
+ 0    0   u33
 
 To reduce the unknowns from 12 to 9, we impose:
-\[
-l_{11} = l_{22} = l_{33} = 1
-\]
+
+l11 = l22 = l33 = 1
 
 This allows solving the system of 9 equations in 9 unknowns directly.
 
@@ -59,138 +54,109 @@ This allows solving the system of 9 equations in 9 unknowns directly.
 ## Examples
 
 ### Example 1
-\[
-A = 
-\begin{bmatrix} 
-1 & 3 & 6 \\ 
-2 & -1 & 1 \\ 
-4 & -2 & 3 
-\end{bmatrix}, \quad 
-b = 
-\begin{bmatrix} 
-3 \\ 9 \\ 19 
-\end{bmatrix}
-\]
+A =
+1   3   6
+2  -1   1
+4  -2   3
 
-LU factorization solution:
+b =
+3
+9
+19
 
-\[
-L = 
-\begin{bmatrix} 
-1 & 0 & 0 \\ 
-2 & 1 & 0 \\ 
-4 & 2 & 1 
-\end{bmatrix}, \quad
-U = 
-\begin{bmatrix} 
-1 & 3 & 6 \\ 
-0 & -7 & -11 \\ 
-0 & 0 & 1 
-\end{bmatrix}
-\]
+L =
+1  0  0
+2  1  0
+4  2  1
 
-\[
-y = 
-\begin{bmatrix} 
-3 \\ 3 \\ 1 
-\end{bmatrix}, \quad
-x = 
-\begin{bmatrix} 
-3 \\ -2 \\ 1 
-\end{bmatrix}
-\]
+U =
+1   3   6
+0  -7 -11
+0   0   1
+
+y =
+3
+3
+1
+
+x =
+3
+-2
+1
 
 ---
 
 ### Example 2
-\[
-A = 
-\begin{bmatrix} 
-3 & 1 & 1 \\ 
--3 & -3 & 1 \\ 
-3 & -3 & 6 
-\end{bmatrix}, \quad 
-b = 
-\begin{bmatrix} 
-2 \\ -4 \\ 0 
-\end{bmatrix}
-\]
+A =
+3   1   1
+-3 -3   1
+3  -3   6
 
-\[
-L = 
-\begin{bmatrix} 
-1 & 0 & 0 \\ 
--1 & 1 & 0 \\ 
-1 & 2 & 1 
-\end{bmatrix}, \quad
-U = 
-\begin{bmatrix} 
-3 & 1 & 1 \\ 
-0 & -2 & 2 \\ 
-0 & 0 & 1 
-\end{bmatrix}
-\]
+b =
+2
+-4
+0
 
-\[
-y = 
-\begin{bmatrix} 
-2 \\ -2 \\ 2 
-\end{bmatrix}, \quad
-x = 
-\begin{bmatrix} 
--1 \\ 3 \\ 2 
-\end{bmatrix}
-\]
+L =
+1  0  0
+-1 1  0
+1  2  1
+
+U =
+3   1   1
+0  -2   2
+0   0   1
+
+y =
+2
+-2
+2
+
+x =
+-1
+3
+2
 
 ---
 
 ### Example 3
-\[
-A = 
-\begin{bmatrix} 
-2 & 2 & 1 \\ 
-1 & -1 & 13/2 \\ 
--2 & -10/3 & 6 
-\end{bmatrix}, \quad 
-b = 
-\begin{bmatrix} 
-6 \\ -15 \\ -24 
-\end{bmatrix}
-\]
+A =
+2    2    1
+1   -1   13/2
+-2  -10/3  6
 
-\[
-L = 
-\begin{bmatrix} 
-1 & 0 & 0 \\ 
-1/2 & 1 & 0 \\ 
--1 & 2/3 & 1 
-\end{bmatrix}, \quad
-U = 
-\begin{bmatrix} 
-2 & 2 & 1 \\ 
-0 & -2 & 6 \\ 
-0 & 0 & 3 
-\end{bmatrix}
-\]
+b =
+6
+-15
+-24
 
-\[
-y = 
-\begin{bmatrix} 
-6 \\ -18 \\ -6 
-\end{bmatrix}, \quad
-x = 
-\begin{bmatrix} 
-1 \\ 3 \\ -2 
-\end{bmatrix}
-\]
+L =
+1    0    0
+1/2  1    0
+-1   2/3  1
+
+U =
+2    2    1
+0   -2    6
+0    0    3
+
+y =
+6
+-18
+-6
+
+x =
+1
+3
+-2
 
 ---
 
 ## Computational Cost
-- **LU factorization:** about \(n^3/3\) operations.
-- **Forward and backward substitution:** about \(n^2\) operations each.
-- **Total:** \((n^3/3) + 2 n^2\) operations.  
-  For large \(n\), the cost is approximately \(n^3/3\).
+- **LU factorization:** about `n^3/3` operations.
+- **Forward and backward substitution:** about `n^2` operations each.
+- **Total:** `(n^3/3) + 2 n^2` operations.  
+  For large `n`, the cost is approximately `n^3/3`.
 
 ---
 
