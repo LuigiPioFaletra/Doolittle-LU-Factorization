@@ -29,9 +29,9 @@ By setting `U * x = y`, the system is solved in two steps:
 Given a 3×3 matrix `A`:
 
 A =
-| a11 | a12 | a13 |
-| a21 | a22 | a23 |
-| a31 | a32 | a33 |
+a11  a12  a13
+a21  a22  a23
+a31  a32  a33
 
 L =
 l11   0    0
