@@ -1,5 +1,45 @@
 # MATLAB Project - Doolittle LU Factorization
 
+## Overview
+
+This repository contains a MATLAB project for **Doolittle LU Factorization**.  
+The program is designed to solve linear systems of equations `A * x = b` using LU decomposition, breaking down the coefficient matrix into lower (`L`) and upper (`U`) triangular matrices.  
+The project was developed as part of coursework in **Advanced Programming / Numerical Methods**.
+
+The project implements:
+- LU factorization using the **Doolittle method**  
+- Forward and backward substitution to solve the system  
+- Automated and manual creation of matrices and vectors  
+- Calculation of computational cost (operations count)  
+- Visualization of results for matrices `L`, `U`, vectors `y` and `x`  
+
+---
+
+## Repository Structure
+
+```
+main_repository/
+│
+├── images/
+│   ├── matrix_A.png
+│   ├── matrix_L.png
+│   └── matrix_U.png
+│
+├── implementation/
+│   ├── calcolo_costo_computazionale.m
+│   ├── dati_input.m
+│   ├── doolittle.m
+│   ├── main_doolittle.m
+│   ├── riempimento_automatico_matrice.m
+│   ├── riempimento_automatico_vettore.m
+│   ├── riempimento_manuale_matrice.m
+│   └── riempimento_manuale_vettore.m
+│
+├── description.pdf
+├── LICENSE
+└── README.md
+```
+
 ## Introduction
 The MATLAB program implements the Doolittle LU factorization method. This is part of the LU factorization methods, where the matrix `A` of the system `A * x = b` is decomposed into the product of two matrices `L` and `U`, which are lower and upper triangular matrices, respectively.
 
